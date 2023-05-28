@@ -641,6 +641,7 @@ static struct inode *namex(char *path, int nameiparent, char *name) {
             iunlockput(ip);
             return 0;
         }
+        //printf("fuck you next %s, type %d\n", name, next->type);
         iunlockput(ip);
         ip = next;
         if(ip->type == T_SYMLINK && strlen(path) > 0){

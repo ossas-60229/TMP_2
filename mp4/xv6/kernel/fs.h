@@ -26,7 +26,7 @@ struct superblock {
 
 // TODO: bigfile
 // You may need to modify these.
-#define NDIRECT 11
+#define NDIRECT 10
 #define NINDIRECT (BSIZE / sizeof(uint))
 #define NINDIRECT2 (BSIZE / sizeof(uint)) * (BSIZE / sizeof(uint))
 #define L2_NUM 2
@@ -40,7 +40,7 @@ struct dinode {
   short minor;          // Minor device number (T_DEVICE only)
   short nlink;          // Number of links to inode in file system
   uint size;            // Size of file (bytes)
-  uint addrs[12+1];   // Data block addresses
+  uint addrs[10+3];   // Data block addresses
 };
 
 // Inodes per block.

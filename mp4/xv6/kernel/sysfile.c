@@ -382,12 +382,15 @@ uint64 sys_chdir(void) {
     char path[MAXPATH];
     struct inode *ip;
     struct proc *p = myproc();
-
-    begin_op();
     if (argstr(0, path, MAXPATH) < 0 || (ip = namei(path)) == 0) {
-        end_op();
         return -1;
     }
+    //printf("fucking path%s, type%d\n",path, ip->type);
+    //if(ip->type == T_SYMLINK){
+        //printf("fuck you \n\n\n\n\\n\n\n\n");
+    //}
+
+    begin_op();
     ilock(ip);
     int depth = 0;
     while(ip->type == T_SYMLINK && depth++ < MAX_DEPTH_LINK){
